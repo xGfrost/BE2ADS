@@ -1,0 +1,22 @@
+meta {
+  name: BE2productASSETS1
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/delete/10
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "name": "nara"
+  }
+}
+
+body:multipart-form {
+  product_id: 3
+  image: @file(C:\Users\Legion\OneDrive\Pictures\Screenshots\Screenshot (4).png)
+}

@@ -18,7 +18,7 @@ const findproducts = async (price) => {
 const insert = async (pddata) => {
     const product = prisma.products.create({
         data:{
-            Category_id: pddata.Category_id,
+            Category_id: parseInt(pddata.Category_id),
             name: pddata.name,
             slug: pddata.slug,
             price:pddata.price,
@@ -30,21 +30,22 @@ const insert = async (pddata) => {
 const edit = async (id,pddata) => {
     const product = prisma.products.update({
         where:{
-            id:id,
+            id:parseInt(id),
         },
         data:{
-            Category_id: pddata.Category_id,
+            Category_id: parseInt(pddata.Category_id),
             name: pddata.name,
             slug: pddata.slug,
             price:pddata.price,
         }
     })
+    return product;
 }
 
 const deleteid = async (id) => {
     await prisma.products.delete({
         where:{
-            id: id,
+            id: parseInt(id),
         }
     })
 }

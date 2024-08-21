@@ -14,22 +14,22 @@ model categories {
 }
 
 model product_assets {
-  id         Int       @id @default(autoincrement())
-  product_id Int?
-  image      String    @db.VarChar(255)
-  products   products? @relation(fields: [product_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "product_assets_ibfk_1")
+  id         Int      @id @default(autoincrement())
+  product_id Int
+  image      String   @db.VarChar(255)
+  products   products @relation(fields: [product_id], references: [id], onUpdate: Restrict, map: "product_assets_ibfk_1")
 
   @@index([product_id], map: "product_id")
 }
 
 model products {
   id             Int              @id @default(autoincrement())
-  Category_id    Int?
+  Category_id    Int
   name           String           @db.VarChar(255)
   slug           String           @db.VarChar(255)
   price          Decimal          @db.Decimal(10, 3)
   product_assets product_assets[]
-  categories     categories?      @relation(fields: [Category_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "products_ibfk_1")
+  categories     categories       @relation(fields: [Category_id], references: [id], onUpdate: Restrict, map: "products_ibfk_1")
 
   @@index([Category_id], map: "Category_id")
 }

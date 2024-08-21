@@ -1,0 +1,24 @@
+meta {
+  name: BE2 POST product
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/delete/6
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "name": "nara"
+  }
+}
+
+body:multipart-form {
+  Category_id: 2
+  name: F
+  slug: ROG
+  price: 1000000
+}
