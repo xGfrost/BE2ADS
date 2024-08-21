@@ -15,6 +15,43 @@ const findproducts = async (price) => {
     return product;
 }
 
+const insert = async (pddata) => {
+    const product = prisma.products.create({
+        data:{
+            Category_id: pddata.Category_id,
+            name: pddata.name,
+            slug: pddata.slug,
+            price:pddata.price,
+        }
+    })
+    return product;
+}
+
+const edit = async (id,pddata) => {
+    const product = prisma.products.update({
+        where:{
+            id:id,
+        },
+        data:{
+            Category_id: pddata.Category_id,
+            name: pddata.name,
+            slug: pddata.slug,
+            price:pddata.price,
+        }
+    })
+}
+
+const deleteid = async (id) => {
+    await prisma.products.delete({
+        where:{
+            id: id,
+        }
+    })
+}
+
 module.exports = {
     findproducts,
+    insert,
+    edit,
+    deleteid,
 }
