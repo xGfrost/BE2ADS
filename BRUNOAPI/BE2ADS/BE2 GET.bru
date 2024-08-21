@@ -1,0 +1,17 @@
+meta {
+  name: BE2 GET
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "nara"
+  }
+}
