@@ -1,4 +1,4 @@
-const { insert, edit, deleteid } = require('./product_assets.repository');
+const { insert, edit, deleteid, findall } = require('./product_assets.repository');
 
 const create = async (padata) => {
     const assets = await insert(padata);
@@ -14,8 +14,14 @@ const deleteassets = async (id) => {
     await deleteid(id)
 }
 
+const getAll = async () => {
+    const assets = await findall();
+    return assets;
+}
+
 module.exports = {
     create,
     update,
     deleteassets,
+    getAll,
 }

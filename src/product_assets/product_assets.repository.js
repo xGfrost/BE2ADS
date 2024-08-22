@@ -31,8 +31,22 @@ const deleteid = async (id) => {
     });
 }
 
+const findall = async () => {
+    const assets = await prisma.product_assets.findMany({
+        include:{
+            products: {
+                select:{
+                    name: true
+                }
+            }
+        }
+    })
+    return assets;
+}
+
 module.exports = {
     insert,
     edit,
     deleteid,
+    findall,
 }

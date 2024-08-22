@@ -1,5 +1,5 @@
 const express = require('express');
-const { create, update, deleteassets } = require('./product_assets.service');
+const { create, update, deleteassets, getAll } = require('./product_assets.service');
 const router = express.Router();
 
 router.post('/', async (req,res) => {
@@ -44,6 +44,15 @@ router.post('/delete/:id', async (req,res) => {
         res.send({
             message:"Success"
         })
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+})
+
+router.get('/', async (req, res) => {
+    try {
+        const assets = await getAll();
+        res.send(assets);
     } catch (error) {
         res.status(400).send(error.message);
     }
